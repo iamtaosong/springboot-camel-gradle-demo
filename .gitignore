@@ -1,0 +1,7 @@
+target
+.idea
+.gradle
+build/*
+ikea-import-io-demo.iml
+ikea-import-io-demo.ipr
+ikea-import-io-demo.iws
