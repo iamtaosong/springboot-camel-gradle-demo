@@ -1,0 +1,128 @@
+{
+
+  "extractorData": {
+    "url": "http://www.ikea.com/gb/en/catalog/products/50212486/",
+    "resourceId": "b0e0deab5fb44b28791aa62461692325",
+    "data": [
+      {
+        "group": [
+          {
+            "Productcontainer link": [
+              {
+                "text": "ABSORB \nleathercare set £16 /0.39 l",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Popupimg image": [
+              {
+                "src": "http://www.ikea.com/PIAimages/0371546_PE551105_S2.JPG",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Prodname value": [
+              {
+                "text": "ABSORB",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Proddesc value": [
+              {
+                "text": "leathercare set",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Prodprice price": [
+              {
+                "text": "£16",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Perproduct value": [
+              {
+                "text": "/0.39 l",
+                "href": "http://www.ikea.com/gb/en/catalog/products/10032294/"
+              }
+            ],
+            "Proddimension values": [
+              {
+                "text": "Volume: 390 ml"
+              }
+            ],
+            "Addtobasket label": [
+              {
+                "text": "Add to basket"
+              }
+            ],
+            "Savetolist label": [
+              {
+                "text": "Save to list"
+              }
+            ]
+          },
+          {
+            "Productcontainer link": [
+              {
+                "text": "KOLON \nfloor protector £19",
+                "href": "http://www.ikea.com/gb/en/catalog/products/44881100/"
+              }
+            ],
+            "Popupimg image": [
+              {
+                "src": "http://www.ikea.com/PIAimages/0292207_PE425129_S2.JPG",
+                "href": "http://www.ikea.com/gb/en/catalog/products/44881100/"
+              }
+            ],
+            "Prodname value": [
+              {
+                "text": "KOLON",
+                "href": "http://www.ikea.com/gb/en/catalog/products/44881100/"
+              }
+            ],
+            "Proddesc value": [
+              {
+                "text": "floor protector",
+                "href": "http://www.ikea.com/gb/en/catalog/products/44881100/"
+              }
+            ],
+            "Prodprice price": [
+              {
+                "text": "£19",
+                "href": "http://www.ikea.com/gb/en/catalog/products/44881100/"
+              }
+            ],
+            "Proddimension values": [
+              {
+                "text": "Length: 100 cm"
+              },
+              {
+                "text": "Width: 120 cm"
+              },
+              {
+                "text": "Thickness: 0.2 cm"
+              }
+            ],
+            "Addtobasket label": [
+              {
+                "text": "Add to basket"
+              }
+            ],
+            "Savetolist label": [
+              {
+                "text": "Save to list"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "pageData": {
+    "resourceId": "b0e0deab5fb44b28791aa62461692325",
+    "statusCode": 200,
+    "timestamp": 1471644151190
+  },
+  "url": "http://www.ikea.com/gb/en/catalog/products/50212486/",
+  "runtimeConfigId": "f2cd68f7-00fb-4a54-94a6-adf5a33c1c4b",
+  "timestamp": 1471644348968
+
+}

@@ -8,7 +8,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+//        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.1.RELEASE")
     }
 }
 
@@ -22,6 +23,21 @@ apply plugin: 'spring-boot'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+def versions = [
+        camel:      '2.17.3',
+
+
+//        groovy:   '2.3.11',
+//        junit:    '4.11',
+//        grava:'19.0',
+//        slf4j:'1.7.21',
+//        jukito:'1.4.1',
+//        guice:'3.0',
+//        mockito:'1.10.19',
+//        camel:      '2.17.3',
+//        wiremock: '1.56'
+]
+
 
 repositories {
     jcenter()
@@ -29,17 +45,20 @@ repositories {
 }
 
 dependencies {
-
+    //misc
     compile 'org.slf4j:slf4j-api:1.7.21'
-    testCompile 'junit:junit:4.12'
-
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0'
     //test
-    testCompile 'org.codehaus.groovy:groovy-all:2.4.5'
+    compile 'org.codehaus.groovy:groovy-all:2.4.5'
+    testCompile 'junit:junit:4.12'
     testCompile 'org.spockframework:spock-core:1.0-groovy-2.4'
+
+
     testCompile(group: 'com.github.tomakehurst', name: 'wiremock', version:'1.56', classifier:'standalone') {
         exclude(module: 'guava')
         exclude(module: 'jetty')
     }
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 
     //springboot
     compile group: 'org.apache.commons', name: 'commons-io', version:'1.3.2'
@@ -52,12 +71,35 @@ dependencies {
 
 
 
-    //camel
-    compile group: 'org.apache.camel', name: 'camel-spring-boot', version: '2.17.3'
-    compile group: 'org.apache.camel', name: 'camel-quartz2', version: '2.17.3'
+    //camelspring-boot-starter-test
+    compile group: 'org.apache.camel', name: 'camel-spring-boot', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-quartz2', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-test', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-http', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-jsonpath', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-quartz2', version: "${versions.camel}"
+}
+
+test {
+    Properties localSettings
+    def settingsFile = new File('local.gradle')
+    if(settingsFile.exists()) {
+        settingsFile.withReader { Reader reader ->
+            localSettings = new Properties()
+            localSettings.load(reader)
+        }
+    }
+    maxParallelForks =localSettings?.maxParallelForks?.toInteger() ?:1
+}
+
+task usage << {
+    println ''.padRight(100, '-')
+    println "Run tests: ./gradlew test"
+    println ''.padRight(100, '-')
 }
 
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
 }
+
