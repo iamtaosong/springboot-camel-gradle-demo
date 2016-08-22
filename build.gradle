@@ -78,6 +78,7 @@ dependencies {
     compile group: 'org.apache.camel', name: 'camel-http', version: "${versions.camel}"
     compile group: 'org.apache.camel', name: 'camel-jsonpath', version: "${versions.camel}"
     compile group: 'org.apache.camel', name: 'camel-quartz2', version: "${versions.camel}"
+    compile group: 'org.apache.camel', name: 'camel-csv', version: "${versions.camel}"
 }
 
 test {
@@ -97,7 +98,13 @@ task usage << {
     println "Run tests: ./gradlew test"
     println ''.padRight(100, '-')
 }
-
+task showTests << {
+    runTests.sort({ it.timestamp }).each {
+        print it.fail ? 'FAIL ': 'PASS '
+        print "($it.timestamp + $it.duration) "
+        println it.name
+    }
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
