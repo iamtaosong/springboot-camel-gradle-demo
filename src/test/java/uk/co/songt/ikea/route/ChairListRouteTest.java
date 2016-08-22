@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static javax.ws.rs.core.Response.Status.FORBIDDEN;
 import static javax.ws.rs.core.Response.Status.OK;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -45,7 +46,7 @@ public class ChairListRouteTest {
 
     @Before
     public void setUp() throws Exception {
-        mockChairsEndpoint();
+
 
     }
 
@@ -57,9 +58,18 @@ public class ChairListRouteTest {
 
     @Test
     public void testGenerateFile() throws Exception  {
+        mockChairsEndpoint();
         triggerChairListRoute();
         List<String> fileNames = getFileNamesInFolder(DATA_PATH);
         assert fileNames.contains(csvFileName)==true;
+    }
+
+    @Test(expected=NullPointerException.class)
+    public void testNon200Code() throws Exception  {
+        mockChairsEndpointReturn403();
+        triggerChairListRoute();
+        getFileNamesInFolder(DATA_PATH);
+
     }
 
     private void mockChairsEndpoint() {
@@ -76,6 +86,13 @@ public class ChairListRouteTest {
                         .withStatus(OK.getStatusCode())
                         .withHeader(CONTENT_TYPE, JSON_TYPE)
                         .withBody(rootPayload)));
+    }
+
+    private void mockChairsEndpointReturn403() {
+        stubFor(get(urlEqualTo("/chairs"))
+                .willReturn(aResponse()
+                        .withStatus(FORBIDDEN.getStatusCode())
+                        .withHeader(CONTENT_TYPE, JSON_TYPE)));
     }
 
     private List<String> getFileNamesInFolder(String dir){

@@ -26,7 +26,6 @@ public class ChairListRoute extends RouteBuilder {
     private  String csvFileName;
     @PropertyInject("{{file_csv}}")
     private  String fileCSV;
-
     @Autowired
     UrlProcessor urlProcessor;
     @Autowired
@@ -47,16 +46,12 @@ public class ChairListRoute extends RouteBuilder {
                 .process(urlProcessor)
                 .split(body())
 //                .aggregationStrategy()
-//                .parallelProcessing()
+                .parallelProcessing()
                 .to(ChairRoute.CHAIR_ROUTE)
                 .end()
-//                .log(LoggingLevel.INFO, "chair json  $simple{body}");
                 .process(csvProcessor)
                 .marshal().csv()
                 .to(fileCSV+csvFileName);
-
-
-
     }
 
 }
